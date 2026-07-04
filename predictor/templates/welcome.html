@@ -1,0 +1,566 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>Student Dropout Prediction System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Segoe UI',sans-serif;
+            background:#eef6f1;
+        }
+
+        /* HEADER */
+
+        .top-header{
+
+            background:white;
+
+            box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+        }
+
+        .logo{
+
+            width:90px;
+            height:90px;
+            object-fit:cover;
+            border-radius:50%;
+            border:4px solid #198754;
+
+        }
+
+        .college-title{
+
+            color:#146c43;
+            font-weight:700;
+
+        }
+
+        .project-title{
+
+            color:#555;
+            font-weight:600;
+
+        }
+
+        .badge-system{
+
+            background:#198754;
+            color:white;
+            font-size:15px;
+            padding:12px 20px;
+            border-radius:30px;
+
+        }
+
+        /* HERO */
+
+        .hero{
+
+            min-height:88vh;
+
+            background:
+            linear-gradient(rgba(10,70,40,.88),
+            rgba(10,70,40,.88)),
+            url("https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1600&q=80");
+
+            background-size:cover;
+            background-position:center;
+
+            display:flex;
+            align-items:center;
+
+            color:white;
+
+        }
+
+        .hero h1{
+
+            font-size:58px;
+            font-weight:700;
+
+        }
+
+        .hero p{
+
+            font-size:19px;
+            line-height:1.9;
+
+        }
+
+        .btn-custom{
+
+            padding:14px 35px;
+            border-radius:40px;
+            font-size:18px;
+            font-weight:600;
+
+        }
+
+        /* FEATURES */
+
+        .section-title{
+
+            color:#146c43;
+            font-weight:700;
+
+        }
+
+        .feature-card{
+
+            border:none;
+            border-radius:18px;
+            transition:.3s;
+            box-shadow:0 8px 25px rgba(0,0,0,.08);
+            height:100%;
+
+        }
+
+        .feature-card:hover{
+
+            transform:translateY(-8px);
+
+        }
+
+        .feature-icon{
+
+            font-size:55px;
+            color:#198754;
+
+        }
+
+        /* OBJECTIVES */
+
+        .objective-card{
+
+            background:white;
+            border-radius:20px;
+            padding:30px;
+            box-shadow:0 8px 20px rgba(0,0,0,.08);
+            transition:.3s;
+            height:100%;
+
+        }
+
+        .objective-card:hover{
+
+            transform:translateY(-8px);
+
+        }
+
+        .objective-card i{
+
+            font-size:45px;
+            color:#198754;
+
+        }
+
+        footer{
+
+            background:#146c43;
+            color:white;
+            padding:30px;
+            text-align:center;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<div class="top-header">
+
+<div class="container py-3">
+
+<div class="row align-items-center">
+
+<div class="col-auto">
+
+<img src="{% static 'images/ccs_logo.jpg' %}"
+     class="logo">
+
+</div>
+
+<div class="col">
+
+<h3 class="college-title">
+
+College of Computing Studies
+
+</h3>
+
+<h5 class="text-secondary">
+
+Western Mindanao State University
+
+</h5>
+
+<h5 class="project-title">
+
+MIT 209 Final Project
+
+</h5>
+
+</div>
+
+<div class="col-auto d-none d-lg-block">
+
+<span class="badge-system">
+
+Machine Learning Powered System
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-7">
+
+<h1>
+
+<i class="fas fa-user-graduate"></i>
+
+Student Dropout Prediction System
+
+</h1>
+
+<p class="mt-4">
+
+The Student Dropout Prediction System is a Machine Learning-powered web
+application developed to predict whether a student is likely to
+<strong>Graduate</strong>,
+remain
+<strong>Enrolled</strong>,
+or become a
+<strong>Dropout</strong>.
+
+The prediction model analyzes student demographic, academic, and institutional
+information to assist schools in identifying students who require early
+academic intervention.
+
+</p>
+
+<div class="mt-5">
+
+<a href="{% url 'home' %}"
+class="btn btn-success btn-lg btn-custom">
+
+<i class="fas fa-play-circle"></i>
+
+Start Prediction
+
+</a>
+
+<a href="{% url 'history' %}"
+class="btn btn-outline-light btn-lg btn-custom ms-2">
+
+<i class="fas fa-clock-rotate-left"></i>
+
+Prediction History
+
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-5 text-center">
+
+<i class="fas fa-brain"
+style="font-size:230px;opacity:.95;"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="py-5">
+
+<div class="container">
+
+<h2 class="text-center section-title mb-5">
+
+System Features
+
+</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="feature-card text-center p-4">
+
+<div class="feature-icon">
+
+<i class="fas fa-brain"></i>
+
+</div>
+
+<h4>
+
+Machine Learning
+
+</h4>
+
+<p>
+
+Uses a trained Random Forest model to classify students as
+Graduate, Enrolled, or Dropout with high prediction accuracy.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card text-center p-4">
+
+<div class="feature-icon">
+
+<i class="fas fa-chart-line"></i>
+
+</div>
+
+<h4>
+
+Early Intervention
+
+</h4>
+
+<p>
+
+Identifies students who may require academic assistance before
+they become at risk of dropping out.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card text-center p-4">
+
+<div class="feature-icon">
+
+<i class="fas fa-database"></i>
+
+</div>
+
+<h4>
+
+Prediction History
+
+</h4>
+
+<p>
+
+Automatically stores every prediction for monitoring,
+evaluation, and reporting purposes.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= OBJECTIVES ================= -->
+
+<section class="py-5 bg-light">
+
+<div class="container">
+
+<h2 class="text-center section-title mb-5">
+
+System Objectives
+
+</h2>
+
+<div class="row g-4">
+
+<div class="col-md-3">
+
+<div class="objective-card text-center">
+
+<i class="fas fa-user-graduate"></i>
+
+<h4 class="mt-3">
+
+Predict
+
+</h4>
+
+<p>
+
+Student Academic Outcomes
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="objective-card text-center">
+
+<i class="fas fa-school"></i>
+
+<h4 class="mt-3">
+
+Support
+
+</h4>
+
+<p>
+
+Educational Institutions
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="objective-card text-center">
+
+<i class="fas fa-users"></i>
+
+<h4 class="mt-3">
+
+Reduce
+
+</h4>
+
+<p>
+
+Student Dropout Rate
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="objective-card text-center">
+
+<i class="fas fa-award"></i>
+
+<h4 class="mt-3">
+
+Improve
+
+</h4>
+
+<p>
+
+Graduation Success
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h4>
+
+Student Dropout Prediction System
+
+</h4>
+
+<p>
+
+College of Computing Studies
+
+<br>
+
+Western Mindanao State University
+
+</p>
+
+<p>
+
+Powered by Django • Random Forest • Scikit-Learn • Bootstrap 5 • MySQL
+
+</p>
+
+<p>
+
+© 2026 All Rights Reserved
+
+</p>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

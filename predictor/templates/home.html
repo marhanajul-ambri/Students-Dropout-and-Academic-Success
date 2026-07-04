@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row mb-4">
+
+    <div class="col">
+
+        <h2 class="page-title">
+
+            <i class="fas fa-chart-line"></i>
+
+            Student Dropout Prediction
+
+        </h2>
+
+        <p class="text-muted">
+
+            Enter the student's academic and personal information below to predict whether the student is likely to <strong>Graduate</strong>, remain <strong>Enrolled</strong>, or become a <strong>Dropout</strong>.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <div class="card-header">
+
+        <i class="fas fa-user-graduate"></i>
+
+        Student Information
+
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="row">
+
+                {% for field in form %}
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label fw-bold">
+
+                        {{ field.label }}
+
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.errors %}
+
+                    <div class="text-danger small">
+
+                        {{ field.errors }}
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="text-center mt-4">
+
+                <button type="submit"
+                        class="btn btn-success btn-lg px-5">
+
+                    <i class="fas fa-brain"></i>
+
+                    Predict Student Status
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+{% if prediction %}
+
+<br>
+
+<div class="card">
+
+    <div class="card-header">
+
+        <i class="fas fa-robot"></i>
+
+        Prediction Result
+
+    </div>
+
+    <div class="card-body text-center">
+
+        {% if prediction == "Graduate" %}
+
+            <div class="alert alert-success">
+
+                <h2>
+
+                    <i class="fas fa-user-check"></i>
+
+                    {{ prediction }}
+
+                </h2>
+
+                <hr>
+
+                <p class="mb-0">
+
+                    The model predicts that the student is most likely to successfully complete the program and graduate.
+
+                </p>
+
+            </div>
+
+        {% elif prediction == "Enrolled" %}
+
+            <div class="alert alert-warning">
+
+                <h2>
+
+                    <i class="fas fa-book-open"></i>
+
+                    {{ prediction }}
+
+                </h2>
+
+                <hr>
+
+                <p class="mb-0">
+
+                    The model predicts that the student will continue studying and remain enrolled.
+
+                </p>
+
+            </div>
+
+        {% else %}
+
+            <div class="alert alert-danger">
+
+                <h2>
+
+                    <i class="fas fa-triangle-exclamation"></i>
+
+                    {{ prediction }}
+
+                </h2>
+
+                <hr>
+
+                <p class="mb-0">
+
+                    The model predicts that the student is at risk of dropping out. Early academic intervention is recommended.
+
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
